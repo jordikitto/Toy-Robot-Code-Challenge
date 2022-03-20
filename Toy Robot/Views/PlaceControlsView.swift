@@ -53,6 +53,9 @@ struct PlaceControlsView: View {
             .onChange(of: direction) { newDirection in
                 robotController.updateDirection(newDirection)
             }
+            .onChange(of: robotController.direction, perform: { newDirection in
+                direction = newDirection
+            })
             .disabled(robotController.state != .unplaced)
             
             Spacer()
