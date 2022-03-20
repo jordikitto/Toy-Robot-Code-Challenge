@@ -14,6 +14,10 @@ struct TableTopGridView: View {
         GeometryReader { geometry in
             ZStack(alignment: .topLeading) {
                 Rectangle()
+                    .fill(Color.brown)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .shadow(radius: 15)
+                Rectangle()
                     .stroke(Color.black, lineWidth: lineWidth)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                 
