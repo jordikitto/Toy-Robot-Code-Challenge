@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TableTopGridView: View {
+    /// Width of a grid line
     let lineWidth: CGFloat = 5
     
     var body: some View {
@@ -38,6 +39,11 @@ struct TableTopGridView: View {
         }
     }
     
+    /// How far to offset each tile
+    /// - Parameters:
+    ///   - length: Total length of all tiles
+    ///   - index: Index of current tile
+    /// - Returns: Tile offset length
     func tileOffset(for length: CGFloat, at index: Int) -> CGFloat {
         return length * (1/CGFloat(TABLE_SIZE) * CGFloat(index)) - lineWidth/2
     }

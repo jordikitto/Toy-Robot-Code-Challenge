@@ -53,6 +53,8 @@ struct MoveControlsView: View {
 
     }
     
+    // MARK: Subviews
+    
     func MovementButton(_ action: @escaping () -> Void, symbol: String) -> some View {
         Button(action: action, label: {
             Image(systemName: symbol)

@@ -12,14 +12,8 @@ struct RobotView: View {
         GeometryReader { geometry in
             ZStack {
                 Group {
-                    Capsule()
-                        .fill(Color.black)
-                        .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.8)
-                        .position(x: geometry.size.width * 0.15, y: geometry.size.height * 0.5)
-                    Capsule()
-                        .fill(Color.black)
-                        .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.8)
-                        .position(x: geometry.size.width * 0.85, y: geometry.size.height * 0.5)
+                    Wheel(geometry, xPosition: 0.15)
+                    Wheel(geometry, xPosition: 0.85)
                 }
                 Circle()
                     .fill(Color.black)
@@ -30,6 +24,15 @@ struct RobotView: View {
                     .foregroundColor(.purple)
             }
         }
+    }
+    
+    // MARK: Subviews
+    
+    func Wheel(_ geometry: GeometryProxy, xPosition: CGFloat) -> some View {
+        Capsule()
+            .fill(Color.black)
+            .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.8)
+            .position(x: geometry.size.width * xPosition, y: geometry.size.height * 0.5)
     }
 }
 

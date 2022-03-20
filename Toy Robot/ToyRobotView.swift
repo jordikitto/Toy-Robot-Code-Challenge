@@ -8,61 +8,23 @@
 import SwiftUI
 
 struct ToyRobotView: View {
+    /// Robot controlled by player
     @StateObject var playerRobot = RobotController()
+    /// Robot used to preview position for placement
     @StateObject var previewRobot = RobotController()
     
+    /// Whether the preview robot should show or not, since it acts as the placement preview
     @State var showPlacementPreview = false
     
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
-            HStack {
-                GridLabel("Y")
+            TableTop()
+                .padding()
             
-                VStack {
-                    TableTop()
-                    GridLabel("X")
-                }
-                
-                VStack {
-                    NorthIcon()
-                    Spacer()
-                }
-            }
-            .padding()
-            
-            HStack {
-                Spacer()
-                PlaceControlsView(
-                    playerRobot: playerRobot,
-                    previewRobot: previewRobot,
-                    showPlacementPreview: $showPlacementPreview
-                )
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(colorScheme == .dark ? Color.black : Color.white)
-                            .shadow(radius: 15)
-                    )
-                    .padding()
-                    
-                Spacer()
-                MoveControlsView(playerRobot: playerRobot)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(colorScheme == .dark ? Color.black : Color.white)
-                            .shadow(radius: playerRobot.state == .unplaced ? 5 : 15)
-                    )
-                    .padding()
-                    .scaleEffect(playerRobot.state == .unplaced ? 0.9 : 1)
-                    .disabled(playerRobot.state == .unplaced)
-                    .animation(.easeInOut, value: playerRobot.state)
-                
-                Spacer()
-            }
-            .frame(maxHeight: 200)
+            Controls()
+                .frame(maxHeight: 200)
             
         }
         .onAppear() {
@@ -72,7 +34,58 @@ struct ToyRobotView: View {
     
     // MARK: SubViews
     
+    func Controls() -> some View {
+        HStack {
+            Spacer()
+            
+            PlaceControlsView(
+                playerRobot: playerRobot,
+                previewRobot: previewRobot,
+                showPlacementPreview: $showPlacementPreview
+            )
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(colorScheme == .dark ? Color.black : Color.white)
+                        .shadow(radius: 15)
+                )
+                .padding()
+                
+            Spacer()
+            
+            MoveControlsView(playerRobot: playerRobot)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(colorScheme == .dark ? Color.black : Color.white)
+                        .shadow(radius: playerRobot.state == .unplaced ? 5 : 15)
+                )
+                .padding()
+                .scaleEffect(playerRobot.state == .unplaced ? 0.9 : 1)
+                .disabled(playerRobot.state == .unplaced)
+                .animation(.easeInOut, value: playerRobot.state)
+            
+            Spacer()
+        }
+    }
+    
     func TableTop() -> some View {
+        HStack {
+            GridLabel("Y")
+        
+            VStack {
+                Grid()
+                GridLabel("X")
+            }
+            
+            VStack {
+                NorthIcon()
+                Spacer()
+            }
+        }
+    }
+    
+    func Grid() -> some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottomLeading) {
                 TableTopGridView()
@@ -142,6 +155,11 @@ struct ToyRobotView: View {
         return geometry.size.width/CGFloat(TABLE_SIZE)
     }
     
+    /// Get the width/height of the robot based on the current view size
+    /// - Parameters:
+    ///   - geometry: Geometry of table top view
+    ///   - state: State of the robot
+    /// - Returns: Width/height of the robot
     func robotSize(for geometry: GeometryProxy, for state: RobotState) -> CGFloat {
         return tileSize(for: geometry) + (state == .unplaced ? 25 : 0)
     }

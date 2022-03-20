@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// Used to handle the directions the robot can face
 enum RobotDirection: String, Equatable, CaseIterable {
     case north = "North"
     case east = "East"
@@ -16,6 +17,8 @@ enum RobotDirection: String, Equatable, CaseIterable {
     
     // MARK: Initialisers
     
+    /// Generate a direction given an Angle
+    /// - Parameter inputAngle: An angle
     init(from inputAngle: Angle) {
         let angle = inputAngle.normalised
         
@@ -36,12 +39,14 @@ enum RobotDirection: String, Equatable, CaseIterable {
     
     // MARK: Variables
     
+    /// Human readable name
     var name: String {
         get {
             rawValue
         }
     }
     
+    /// Anlge of the direction in degrees
     var angle: Angle {
         switch self {
         case .north:
@@ -55,6 +60,7 @@ enum RobotDirection: String, Equatable, CaseIterable {
         }
     }
     
+    /// Direction that would result from a turn to the next direction to the right
     var directionToRight: RobotDirection {
         switch self {
         case .north:
@@ -68,6 +74,7 @@ enum RobotDirection: String, Equatable, CaseIterable {
         }
     }
     
+    /// Direction that would result from a turn to the next direction to the left
     var directionToLeft: RobotDirection {
         switch self {
         case .north:
@@ -81,6 +88,7 @@ enum RobotDirection: String, Equatable, CaseIterable {
         }
     }
     
+    /// Direction that would result from a 180º turn
     var opposite: RobotDirection {
         switch self {
         case .north:
@@ -96,6 +104,8 @@ enum RobotDirection: String, Equatable, CaseIterable {
     
     // MARK: Functions
     
+    /// Calculates the change in X,Y given a forward move
+    /// - Returns: Delta of X, Y
     func forwardDelta() -> (X: Int, Y: Int) {
         switch self {
         case .north:
@@ -109,6 +119,11 @@ enum RobotDirection: String, Equatable, CaseIterable {
         }
     }
     
+    /// Calculates the change needed to reach the given direction
+    ///
+    /// This was created to stop the scenario of where going from West -> North could happen from a 270º turn to the left instead of a 90º turn to the right, which looks more natural.
+    /// - Parameter newDirection: Direction to move to
+    /// - Returns: Delta required to reach new direction
     func delta(to newDirection: RobotDirection) -> Angle {
         if (self == newDirection) {
             return .degrees(0)
@@ -119,7 +134,7 @@ enum RobotDirection: String, Equatable, CaseIterable {
         } else if (self.directionToRight == newDirection) {
             return .degrees(90)
         } else {
-            // Fallback that I'm pretty sure should never happen
+            // Fallback that I'm pretty sure should never happen, but just incase
             return newDirection.angle - self.angle
         }
     }
