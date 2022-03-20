@@ -66,12 +66,16 @@ struct ToyRobotView: View {
             ZStack(alignment: .bottomLeading) {
                 TableTopGridView()
                 RobotView()
-                    .frame(width: tileSize(for: geometry), height: tileSize(for: geometry))
+                    .frame(
+                        width: robotSize(for: geometry, isPlaced: robotController.state != .unplaced),
+                        height: robotSize(for: geometry, isPlaced: robotController.state != .unplaced))
                     .rotationEffect(robotController.angle)
                     .position(x: xPosition(for: geometry), y: yPosition(for: geometry))
                     .offset(x: -geometry.size.width/12, y: geometry.size.height/12)
+//                    .opacity(robotController.state == .unplaced ? 0.8 : 1)
+                    .shadow(radius: robotController.state == .unplaced ? 25 : 0)
                     .animation(.linear, value: robotController.angle)
-                    
+                    .animation(.easeInOut, value: robotController.state)
             }
             .animation(.linear, value: robotController.yTile)
             .animation(.linear, value: robotController.xTile)
@@ -101,6 +105,10 @@ struct ToyRobotView: View {
     /// - Returns: Width/height of a tile on table top
     func tileSize(for geometry: GeometryProxy) -> CGFloat {
         return geometry.size.width/CGFloat(TABLE_SIZE)
+    }
+    
+    func robotSize(for geometry: GeometryProxy, isPlaced: Bool) -> CGFloat {
+        return tileSize(for: geometry) + (isPlaced ? 0 : 25)
     }
     
     /// Get the X position for the robot

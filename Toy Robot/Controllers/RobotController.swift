@@ -15,8 +15,16 @@ class RobotController: ObservableObject {
     @Published var angle: Angle = .degrees(0)
     @Published var state: RobotState = .unplaced
     
-    func place() {
+    func place(newX: Int? = nil, newY: Int? = nil) {
         state = .nominal
+        
+        if let x = newX {
+            xTile = x
+        }
+        if let y = newY {
+            yTile = y
+        }
+        
         detectObstruction()
     }
     

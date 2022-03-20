@@ -11,6 +11,8 @@ struct PlaceControlsView: View {
     @EnvironmentObject var robotController: RobotController
     
     @State var direction: RobotDirection = .north
+    @State var xTile = 1
+    @State var yTile = 1
     
     let size = 6
     
@@ -23,20 +25,30 @@ struct PlaceControlsView: View {
             Spacer()
             
             HStack {
-                Picker(selection: $robotController.xTile) {
+                Picker(selection: $xTile) {
                     ForEach(1...TABLE_SIZE, id: \.self) { index in
                         Text("\(index)")
                     }
                 } label: {
                     Text("X")
                 }
+                .onChange(of: xTile) { newX in
+                    if (robotController.state == .unplaced) {
+                        robotController.xTile = newX
+                    }
+                }
                 
-                Picker(selection: $robotController.yTile) {
+                Picker(selection: $yTile) {
                     ForEach(1...TABLE_SIZE, id: \.self) { index in
                         Text("\(index)")
                     }
                 } label: {
                     Text("Y")
+                }
+                .onChange(of: yTile) { newY in
+                    if (robotController.state == .unplaced) {
+                        robotController.yTile = newY
+                    }
                 }
             }
             
@@ -61,7 +73,11 @@ struct PlaceControlsView: View {
             Spacer()
             
             Button {
-                robotController.place()
+                if (robotController.state == .unplaced) {
+                    robotController.place()
+                } else {
+                    robotController.place(newX: xTile, newY: yTile)
+                }
             } label: {
                 Text("Place")
             }
