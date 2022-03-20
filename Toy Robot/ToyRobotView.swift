@@ -65,22 +65,29 @@ struct ToyRobotView: View {
         GeometryReader { geometry in
             ZStack(alignment: .bottomLeading) {
                 TableTopGridView()
-                RobotView()
-                    .frame(
-                        width: robotSize(for: geometry, isPlaced: robotController.state != .unplaced),
-                        height: robotSize(for: geometry, isPlaced: robotController.state != .unplaced))
-                    .rotationEffect(robotController.angle)
-                    .position(x: xPosition(for: geometry), y: yPosition(for: geometry))
-                    .offset(x: -geometry.size.width/12, y: geometry.size.height/12)
-//                    .opacity(robotController.state == .unplaced ? 0.8 : 1)
-                    .shadow(radius: robotController.state == .unplaced ? 25 : 0)
-                    .animation(.linear, value: robotController.angle)
-                    .animation(.easeInOut, value: robotController.state)
+                Robot(at: geometry)
             }
-            .animation(.linear, value: robotController.yTile)
-            .animation(.linear, value: robotController.xTile)
         }
         .aspectRatio(1.0, contentMode: .fit)
+    }
+    
+    func Robot(at geometry: GeometryProxy) -> some View {
+        RobotView()
+            .frame(
+                width: robotSize(for: geometry, for: robotController.state),
+                height: robotSize(for: geometry, for: robotController.state)
+            )
+            .rotationEffect(robotController.angle)
+            .position(x: xPosition(for: geometry), y: yPosition(for: geometry))
+            .offset(
+                x: -geometry.size.width/CGFloat((TABLE_SIZE*2)),
+                y: geometry.size.height/CGFloat((TABLE_SIZE*2))
+            ) // Offset by half a tile, to bring robot to center of tile
+            .shadow(radius: robotController.state == .unplaced ? 25 : 0)
+            .animation(.linear, value: robotController.angle)
+            .animation(.easeInOut, value: robotController.state)
+            .animation(.easeInOut, value: robotController.yTile)
+            .animation(.easeInOut, value: robotController.xTile)
     }
     
     func GridLabel(_ text: String) -> some View {
@@ -107,8 +114,8 @@ struct ToyRobotView: View {
         return geometry.size.width/CGFloat(TABLE_SIZE)
     }
     
-    func robotSize(for geometry: GeometryProxy, isPlaced: Bool) -> CGFloat {
-        return tileSize(for: geometry) + (isPlaced ? 0 : 25)
+    func robotSize(for geometry: GeometryProxy, for state: RobotState) -> CGFloat {
+        return tileSize(for: geometry) + (state == .unplaced ? 25 : 0)
     }
     
     /// Get the X position for the robot
