@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct ToyRobotView: View {
-    @StateObject var robotController = RobotController()
+    @StateObject var playerRobot = RobotController()
+    @StateObject var previewRobot = RobotController()
+    
+    @State var showPlacementPreview = false
     
     var body: some View {
         VStack {
@@ -29,7 +32,11 @@ struct ToyRobotView: View {
             
             HStack {
                 Spacer()
-                PlaceControlsView()
+                PlaceControlsView(
+                    playerRobot: playerRobot,
+                    previewRobot: previewRobot,
+                    showPlacementPreview: $showPlacementPreview
+                )
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 10)
@@ -39,24 +46,26 @@ struct ToyRobotView: View {
                     .padding()
                     
                 Spacer()
-                MoveControlsView()
+                MoveControlsView(playerRobot: playerRobot)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.white)
-                            .shadow(radius: robotController.state == .unplaced ? 5 : 15)
+                            .shadow(radius: playerRobot.state == .unplaced ? 5 : 15)
                     )
                     .padding()
-                    .scaleEffect(robotController.state == .unplaced ? 0.9 : 1)
-                    .disabled(robotController.state == .unplaced)
-                    .animation(.easeInOut, value: robotController.state)
+                    .scaleEffect(playerRobot.state == .unplaced ? 0.9 : 1)
+                    .disabled(playerRobot.state == .unplaced)
+                    .animation(.easeInOut, value: playerRobot.state)
                 
                 Spacer()
             }
             .frame(maxHeight: 200)
             
         }
-        .environmentObject(robotController)
+        .onAppear() {
+            previewRobot.state = .nominal
+        }
     }
     
     // MARK: SubViews
@@ -65,29 +74,46 @@ struct ToyRobotView: View {
         GeometryReader { geometry in
             ZStack(alignment: .bottomLeading) {
                 TableTopGridView()
-                Robot(at: geometry)
+                Robot(on: geometry, controlledBy: previewRobot)
+                    .opacity(showPlacementPreview ? 0.5 : 0)
+                    .animation(.linear, value: showPlacementPreview)
+                    .onChange(of: playerRobot.xTile) { playerX in
+                        previewRobot.xTile = playerX
+                        previewRobot.yTile = playerRobot.yTile
+                    }
+                    .onChange(of: playerRobot.yTile) { playerY in
+                        previewRobot.xTile = playerRobot.xTile
+                        previewRobot.yTile = playerY
+                    }
+                    .onChange(of: playerRobot.angle) { newAngle in
+                        previewRobot.angle = newAngle
+                    }
+                Robot(on: geometry, controlledBy: playerRobot)
             }
         }
         .aspectRatio(1.0, contentMode: .fit)
     }
     
-    func Robot(at geometry: GeometryProxy) -> some View {
+    func Robot(on geometry: GeometryProxy, controlledBy robot: RobotController) -> some View {
         RobotView()
             .frame(
-                width: robotSize(for: geometry, for: robotController.state),
-                height: robotSize(for: geometry, for: robotController.state)
+                width: robotSize(for: geometry, for: robot.state),
+                height: robotSize(for: geometry, for: robot.state)
             )
-            .rotationEffect(robotController.angle)
-            .position(x: xPosition(for: geometry), y: yPosition(for: geometry))
+            .rotationEffect(robot.angle)
+            .position(
+                x: xPosition(for: geometry, for: robot),
+                y: yPosition(for: geometry, for: robot)
+            )
             .offset(
                 x: -geometry.size.width/CGFloat((TABLE_SIZE*2)),
                 y: geometry.size.height/CGFloat((TABLE_SIZE*2))
             ) // Offset by half a tile, to bring robot to center of tile
-            .shadow(radius: robotController.state == .unplaced ? 25 : 0)
-            .animation(.linear, value: robotController.angle)
-            .animation(.easeInOut, value: robotController.state)
-            .animation(.easeInOut, value: robotController.yTile)
-            .animation(.easeInOut, value: robotController.xTile)
+            .shadow(radius: robot.state == .unplaced ? 25 : 0)
+            .animation(.linear, value: robot.angle)
+            .animation(.easeInOut, value: robot.state)
+            .animation(.easeInOut, value: robot.yTile)
+            .animation(.easeInOut, value: robot.xTile)
     }
     
     func GridLabel(_ text: String) -> some View {
@@ -99,7 +125,7 @@ struct ToyRobotView: View {
     func NorthIcon() -> some View {
         VStack {
             Text("N")
-            Image(systemName: "location.north.line")
+            Image(systemName: "location.north")
         }
         .font(.title)
         .foregroundColor(.gray)
@@ -123,8 +149,8 @@ struct ToyRobotView: View {
     /// An X of 0 starts from the left of the view
     /// - Parameter geometry: Geometry of table top view
     /// - Returns: X position of robot
-    func xPosition(for geometry: GeometryProxy) -> CGFloat {
-        return tileSize(for: geometry) * CGFloat(robotController.xTile)
+    func xPosition(for geometry: GeometryProxy, for robot: RobotController) -> CGFloat {
+        return tileSize(for: geometry) * CGFloat(robot.xTile)
     }
     
     /// Get the Y position for the robot
@@ -132,8 +158,8 @@ struct ToyRobotView: View {
     /// An Y of 0 starts from the top of the view
     /// - Parameter geometry: Geometry of table top view
     /// - Returns: Y position of robot
-    func yPosition(for geometry: GeometryProxy) -> CGFloat {
-        return geometry.size.height - tileSize(for: geometry) * CGFloat(robotController.yTile)
+    func yPosition(for geometry: GeometryProxy, for robot: RobotController) -> CGFloat {
+        return geometry.size.height - tileSize(for: geometry) * CGFloat(robot.yTile)
     }
 }
 

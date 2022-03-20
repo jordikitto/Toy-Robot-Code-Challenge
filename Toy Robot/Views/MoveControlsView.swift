@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoveControlsView: View {
-    @EnvironmentObject var robotController: RobotController
+    @ObservedObject var playerRobot: RobotController
     
     @State private var showReport = false
     
@@ -21,14 +21,14 @@ struct MoveControlsView: View {
             Spacer()
             
             HStack {
-                MovementButton(robotController.turnLeft, symbol: "arrow.uturn.down.circle.fill")
+                MovementButton(playerRobot.turnLeft, symbol: "arrow.uturn.down.circle.fill")
                 
-                MovementButton(robotController.moveForward, symbol: "arrow.up.circle.fill")
-                    .rotationEffect(robotController.angle)
-                    .animation(.linear, value: robotController.angle)
-                    .disabled(robotController.state == .obstructed)
+                MovementButton(playerRobot.moveForward, symbol: "arrow.up.circle.fill")
+                    .rotationEffect(playerRobot.angle)
+                    .animation(.linear, value: playerRobot.angle)
+                    .disabled(playerRobot.state == .obstructed)
                 
-                MovementButton(robotController.turnRight, symbol: "arrow.uturn.down.circle.fill")
+                MovementButton(playerRobot.turnRight, symbol: "arrow.uturn.down.circle.fill")
                     .rotation3DEffect(.degrees(180), axis: (0, 180, 0))
             }
             
@@ -48,7 +48,7 @@ struct MoveControlsView: View {
                 Text("Ok")
             }
         } message: {
-            Text("X Position: \(robotController.xTile)\nY Position: \(robotController.yTile)\nDirection: \(robotController.direction.name)")
+            Text("X Position: \(playerRobot.xTile)\nY Position: \(playerRobot.yTile)\nDirection: \(playerRobot.direction.name)")
         }
 
     }
@@ -64,6 +64,6 @@ struct MoveControlsView: View {
 
 struct MoveControlsView_Previews: PreviewProvider {
     static var previews: some View {
-        MoveControlsView()
+        MoveControlsView(playerRobot: RobotController())
     }
 }

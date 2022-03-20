@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct PlaceControlsView: View {
-    @EnvironmentObject var robotController: RobotController
+    @ObservedObject var playerRobot: RobotController
+    @ObservedObject var previewRobot: RobotController
     
     @State var direction: RobotDirection = .north
     @State var xTile = 1
     @State var yTile = 1
     
-    let size = 6
+    @Binding var showPlacementPreview: Bool
     
     var body: some View {
         VStack {
@@ -33,8 +34,13 @@ struct PlaceControlsView: View {
                     Text("X")
                 }
                 .onChange(of: xTile) { newX in
-                    if (robotController.state == .unplaced) {
-                        robotController.xTile = newX
+                    previewRobot.xTile = newX
+                    
+                    if (playerRobot.state == .unplaced) {
+                        playerRobot.xTile = newX
+                    } else {
+                        previewRobot.yTile = yTile
+                        showPlacementPreview = true
                     }
                 }
                 
@@ -46,8 +52,13 @@ struct PlaceControlsView: View {
                     Text("Y")
                 }
                 .onChange(of: yTile) { newY in
-                    if (robotController.state == .unplaced) {
-                        robotController.yTile = newY
+                    previewRobot.yTile = newY // Keep updated
+                    
+                    if (playerRobot.state == .unplaced) {
+                        playerRobot.yTile = newY
+                    } else {
+                        previewRobot.xTile = xTile
+                        showPlacementPreview = true
                     }
                 }
             }
@@ -63,20 +74,21 @@ struct PlaceControlsView: View {
             .pickerStyle(.segmented)
             .labelsHidden()
             .onChange(of: direction) { newDirection in
-                robotController.updateDirection(newDirection)
+                playerRobot.updateDirection(newDirection)
             }
-            .onChange(of: robotController.direction, perform: { newDirection in
+            .onChange(of: playerRobot.direction, perform: { newDirection in
                 direction = newDirection
             })
-            .disabled(robotController.state != .unplaced)
+            .disabled(playerRobot.state != .unplaced)
             
             Spacer()
             
             Button {
-                if (robotController.state == .unplaced) {
-                    robotController.place()
+                if (playerRobot.state == .unplaced) {
+                    playerRobot.place()
                 } else {
-                    robotController.place(newX: xTile, newY: yTile)
+                    showPlacementPreview = false
+                    playerRobot.place(newX: xTile, newY: yTile)
                 }
             } label: {
                 Text("Place")
@@ -88,6 +100,10 @@ struct PlaceControlsView: View {
 
 struct PlaceControlsView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceControlsView()
+        PlaceControlsView(
+            playerRobot: RobotController(),
+            previewRobot: RobotController(),
+            showPlacementPreview: .constant(false)
+        )
     }
 }

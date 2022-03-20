@@ -16,7 +16,9 @@ class RobotController: ObservableObject {
     @Published var state: RobotState = .unplaced
     
     func place(newX: Int? = nil, newY: Int? = nil) {
-        state = .nominal
+        if (state == .unplaced) {
+            state = .nominal
+        }
         
         if let x = newX {
             xTile = x

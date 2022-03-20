@@ -27,7 +27,7 @@ struct RobotView: View {
                 Image(systemName: "arrow.up.circle")
                     .resizable()
                     .frame(width: geometry.size.width * 0.5, height: geometry.size.height * 0.5)
-                    .foregroundColor(.white)
+                    .foregroundColor(.purple)
             }
         }
     }
