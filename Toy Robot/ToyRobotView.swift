@@ -14,35 +14,14 @@ struct ToyRobotView: View {
         VStack {
             HStack {
                 GridLabel("Y")
-                
+            
                 VStack {
-                    GeometryReader { geometry in
-                        ZStack(alignment: .bottomLeading) {
-                            TableTopGridView()
-                            RobotView()
-                                .frame(width: tileSize(for: geometry), height: tileSize(for: geometry))
-                                .rotationEffect(robotController.angle)
-                                .position(x: xPosition(for: geometry), y: yPosition(for: geometry))
-                                .offset(x: -geometry.size.width/12, y: geometry.size.height/12)
-                                .animation(.linear, value: robotController.angle)
-                                
-                        }
-                        .animation(.linear, value: robotController.yTile)
-                        .animation(.linear, value: robotController.xTile)
-                    }
-                    .aspectRatio(1.0, contentMode: .fit)
-                    
+                    TableTop()
                     GridLabel("X")
                 }
                 
                 VStack {
-                    VStack {
-                        Text("N")
-                        Image(systemName: "location.north.line")
-                    }
-                    .font(.title)
-                    .foregroundColor(.gray)
-                    
+                    NorthIcon()
                     Spacer()
                 }
             }
@@ -71,6 +50,7 @@ struct ToyRobotView: View {
                     .scaleEffect(robotController.state == .unplaced ? 0.9 : 1)
                     .disabled(robotController.state == .unplaced)
                     .animation(.easeInOut, value: robotController.state)
+                
                 Spacer()
             }
             .frame(maxHeight: 200)
@@ -78,6 +58,43 @@ struct ToyRobotView: View {
         }
         .environmentObject(robotController)
     }
+    
+    // MARK: SubViews
+    
+    func TableTop() -> some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .bottomLeading) {
+                TableTopGridView()
+                RobotView()
+                    .frame(width: tileSize(for: geometry), height: tileSize(for: geometry))
+                    .rotationEffect(robotController.angle)
+                    .position(x: xPosition(for: geometry), y: yPosition(for: geometry))
+                    .offset(x: -geometry.size.width/12, y: geometry.size.height/12)
+                    .animation(.linear, value: robotController.angle)
+                    
+            }
+            .animation(.linear, value: robotController.yTile)
+            .animation(.linear, value: robotController.xTile)
+        }
+        .aspectRatio(1.0, contentMode: .fit)
+    }
+    
+    func GridLabel(_ text: String) -> some View {
+        Text(text)
+            .font(.title)
+            .foregroundColor(.gray)
+    }
+    
+    func NorthIcon() -> some View {
+        VStack {
+            Text("N")
+            Image(systemName: "location.north.line")
+        }
+        .font(.title)
+        .foregroundColor(.gray)
+    }
+    
+    // MARK: Helpers
     
     /// Get the width/height of a tile based on the current view size
     /// - Parameter geometry: Geometry of table top view
@@ -102,12 +119,6 @@ struct ToyRobotView: View {
     /// - Returns: Y position of robot
     func yPosition(for geometry: GeometryProxy) -> CGFloat {
         return geometry.size.height - tileSize(for: geometry) * CGFloat(robotController.yTile)
-    }
-    
-    func GridLabel(_ text: String) -> some View {
-        Text(text)
-            .font(.title)
-            .foregroundColor(.gray)
     }
 }
 
