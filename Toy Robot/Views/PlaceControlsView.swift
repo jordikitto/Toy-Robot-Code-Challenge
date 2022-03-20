@@ -28,7 +28,7 @@ struct PlaceControlsView: View {
             HStack {
                 Picker(selection: $xTile) {
                     ForEach(1...TABLE_SIZE, id: \.self) { index in
-                        Text("\(index)")
+                        Text("\(index-1)")
                     }
                 } label: {
                     Text("X")
@@ -46,7 +46,7 @@ struct PlaceControlsView: View {
                 
                 Picker(selection: $yTile) {
                     ForEach(1...TABLE_SIZE, id: \.self) { index in
-                        Text("\(index)")
+                        Text("\(index-1)")
                     }
                 } label: {
                     Text("Y")

@@ -48,7 +48,7 @@ struct MoveControlsView: View {
                 Text("Ok")
             }
         } message: {
-            Text("X Position: \(playerRobot.xTile)\nY Position: \(playerRobot.yTile)\nDirection: \(playerRobot.direction.name)")
+            Text("X Position: \(playerRobot.xTile-1)\nY Position: \(playerRobot.yTile-1)\nDirection: \(playerRobot.direction.name)")
         }
 
     }

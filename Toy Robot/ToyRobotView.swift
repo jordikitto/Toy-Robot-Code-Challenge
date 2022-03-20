@@ -13,6 +13,8 @@ struct ToyRobotView: View {
     
     @State var showPlacementPreview = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             HStack {
@@ -40,7 +42,7 @@ struct ToyRobotView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
+                            .fill(colorScheme == .dark ? Color.black : Color.white)
                             .shadow(radius: 15)
                     )
                     .padding()
@@ -50,7 +52,7 @@ struct ToyRobotView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
+                            .fill(colorScheme == .dark ? Color.black : Color.white)
                             .shadow(radius: playerRobot.state == .unplaced ? 5 : 15)
                     )
                     .padding()

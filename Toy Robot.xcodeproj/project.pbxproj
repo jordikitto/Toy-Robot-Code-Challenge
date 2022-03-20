@@ -10,16 +10,14 @@
 		D114B17727E30DEE00D671E3 /* Toy_RobotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B17627E30DEE00D671E3 /* Toy_RobotApp.swift */; };
 		D114B17927E30DEE00D671E3 /* ToyRobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B17827E30DEE00D671E3 /* ToyRobotView.swift */; };
 		D114B17B27E30DF200D671E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D114B17A27E30DF200D671E3 /* Assets.xcassets */; };
-		D114B17E27E30DF200D671E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D114B17D27E30DF200D671E3 /* Preview Assets.xcassets */; };
-		D114B18927E30DF200D671E3 /* Toy_RobotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B18827E30DF200D671E3 /* Toy_RobotTests.swift */; };
-		D114B19327E30DF200D671E3 /* Toy_RobotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B19227E30DF200D671E3 /* Toy_RobotUITests.swift */; };
-		D114B19527E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B19427E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift */; };
+		D114B18927E30DF200D671E3 /* AngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B18827E30DF200D671E3 /* AngleTests.swift */; };
 		D114B1A327E30ECB00D671E3 /* TableTopGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A227E30ECB00D671E3 /* TableTopGridView.swift */; };
 		D114B1A527E3131600D671E3 /* RobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A427E3131600D671E3 /* RobotView.swift */; };
 		D114B1A727E31E5200D671E3 /* PlaceControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A627E31E5200D671E3 /* PlaceControlsView.swift */; };
 		D114B1AA27E31FC500D671E3 /* RobotDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A927E31FC500D671E3 /* RobotDirection.swift */; };
 		D114B1AC27E3224D00D671E3 /* MoveControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1AB27E3224D00D671E3 /* MoveControlsView.swift */; };
 		D114B1AF27E32E9F00D671E3 /* RobotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1AE27E32E9F00D671E3 /* RobotController.swift */; };
+		D13253E127E7D3C800C39F23 /* RobotDirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13253E027E7D3C800C39F23 /* RobotDirectionTests.swift */; };
 		D1D529B127E69EE20015C2C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B027E69EE20015C2C2 /* Constants.swift */; };
 		D1D529B327E6B0730015C2C2 /* RobotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B227E6B0730015C2C2 /* RobotState.swift */; };
 		D1D529B627E6C6420015C2C2 /* Angle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B527E6C6420015C2C2 /* Angle+Ext.swift */; };
@@ -33,13 +31,6 @@
 			remoteGlobalIDString = D114B17227E30DEE00D671E3;
 			remoteInfo = "Toy Robot";
 		};
-		D114B18F27E30DF200D671E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D114B16B27E30DEE00D671E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D114B17227E30DEE00D671E3;
-			remoteInfo = "Toy Robot";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -47,19 +38,16 @@
 		D114B17627E30DEE00D671E3 /* Toy_RobotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotApp.swift; sourceTree = "<group>"; };
 		D114B17827E30DEE00D671E3 /* ToyRobotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToyRobotView.swift; sourceTree = "<group>"; };
 		D114B17A27E30DF200D671E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D114B17D27E30DF200D671E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D114B17F27E30DF200D671E3 /* Toy_Robot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Toy_Robot.entitlements; sourceTree = "<group>"; };
 		D114B18427E30DF200D671E3 /* Toy RobotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Toy RobotTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D114B18827E30DF200D671E3 /* Toy_RobotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotTests.swift; sourceTree = "<group>"; };
-		D114B18E27E30DF200D671E3 /* Toy RobotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Toy RobotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D114B19227E30DF200D671E3 /* Toy_RobotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotUITests.swift; sourceTree = "<group>"; };
-		D114B19427E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D114B18827E30DF200D671E3 /* AngleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 		D114B1A227E30ECB00D671E3 /* TableTopGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTopGridView.swift; sourceTree = "<group>"; };
 		D114B1A427E3131600D671E3 /* RobotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotView.swift; sourceTree = "<group>"; };
 		D114B1A627E31E5200D671E3 /* PlaceControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceControlsView.swift; sourceTree = "<group>"; };
 		D114B1A927E31FC500D671E3 /* RobotDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotDirection.swift; sourceTree = "<group>"; };
 		D114B1AB27E3224D00D671E3 /* MoveControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveControlsView.swift; sourceTree = "<group>"; };
 		D114B1AE27E32E9F00D671E3 /* RobotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotController.swift; sourceTree = "<group>"; };
+		D13253E027E7D3C800C39F23 /* RobotDirectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotDirectionTests.swift; sourceTree = "<group>"; };
 		D1D529B027E69EE20015C2C2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1D529B227E6B0730015C2C2 /* RobotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotState.swift; sourceTree = "<group>"; };
 		D1D529B527E6C6420015C2C2 /* Angle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Ext.swift"; sourceTree = "<group>"; };
@@ -80,13 +68,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D114B18B27E30DF200D671E3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -95,7 +76,6 @@
 			children = (
 				D114B17527E30DEE00D671E3 /* Toy Robot */,
 				D114B18727E30DF200D671E3 /* Toy RobotTests */,
-				D114B19127E30DF200D671E3 /* Toy RobotUITests */,
 				D114B17427E30DEE00D671E3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,7 +85,6 @@
 			children = (
 				D114B17327E30DEE00D671E3 /* Toy Robot.app */,
 				D114B18427E30DF200D671E3 /* Toy RobotTests.xctest */,
-				D114B18E27E30DF200D671E3 /* Toy RobotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,34 +101,17 @@
 				D114B1A127E30EA300D671E3 /* Views */,
 				D114B17A27E30DF200D671E3 /* Assets.xcassets */,
 				D114B17F27E30DF200D671E3 /* Toy_Robot.entitlements */,
-				D114B17C27E30DF200D671E3 /* Preview Content */,
 			);
 			path = "Toy Robot";
-			sourceTree = "<group>";
-		};
-		D114B17C27E30DF200D671E3 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D114B17D27E30DF200D671E3 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		D114B18727E30DF200D671E3 /* Toy RobotTests */ = {
 			isa = PBXGroup;
 			children = (
-				D114B18827E30DF200D671E3 /* Toy_RobotTests.swift */,
+				D114B18827E30DF200D671E3 /* AngleTests.swift */,
+				D13253E027E7D3C800C39F23 /* RobotDirectionTests.swift */,
 			);
 			path = "Toy RobotTests";
-			sourceTree = "<group>";
-		};
-		D114B19127E30DF200D671E3 /* Toy RobotUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D114B19227E30DF200D671E3 /* Toy_RobotUITests.swift */,
-				D114B19427E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift */,
-			);
-			path = "Toy RobotUITests";
 			sourceTree = "<group>";
 		};
 		D114B1A127E30EA300D671E3 /* Views */ = {
@@ -226,24 +188,6 @@
 			productReference = D114B18427E30DF200D671E3 /* Toy RobotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D114B18D27E30DF200D671E3 /* Toy RobotUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D114B19E27E30DF200D671E3 /* Build configuration list for PBXNativeTarget "Toy RobotUITests" */;
-			buildPhases = (
-				D114B18A27E30DF200D671E3 /* Sources */,
-				D114B18B27E30DF200D671E3 /* Frameworks */,
-				D114B18C27E30DF200D671E3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D114B19027E30DF200D671E3 /* PBXTargetDependency */,
-			);
-			name = "Toy RobotUITests";
-			productName = "Toy RobotUITests";
-			productReference = D114B18E27E30DF200D671E3 /* Toy RobotUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -258,10 +202,6 @@
 						CreatedOnToolsVersion = 13.3;
 					};
 					D114B18327E30DF200D671E3 = {
-						CreatedOnToolsVersion = 13.3;
-						TestTargetID = D114B17227E30DEE00D671E3;
-					};
-					D114B18D27E30DF200D671E3 = {
 						CreatedOnToolsVersion = 13.3;
 						TestTargetID = D114B17227E30DEE00D671E3;
 					};
@@ -282,7 +222,6 @@
 			targets = (
 				D114B17227E30DEE00D671E3 /* Toy Robot */,
 				D114B18327E30DF200D671E3 /* Toy RobotTests */,
-				D114B18D27E30DF200D671E3 /* Toy RobotUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -292,19 +231,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D114B17E27E30DF200D671E3 /* Preview Assets.xcassets in Resources */,
 				D114B17B27E30DF200D671E3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D114B18227E30DF200D671E3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D114B18C27E30DF200D671E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -336,16 +267,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D114B18927E30DF200D671E3 /* Toy_RobotTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D114B18A27E30DF200D671E3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D114B19527E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift in Sources */,
-				D114B19327E30DF200D671E3 /* Toy_RobotUITests.swift in Sources */,
+				D13253E127E7D3C800C39F23 /* RobotDirectionTests.swift in Sources */,
+				D114B18927E30DF200D671E3 /* AngleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,11 +279,6 @@
 			isa = PBXTargetDependency;
 			target = D114B17227E30DEE00D671E3 /* Toy Robot */;
 			targetProxy = D114B18527E30DF200D671E3 /* PBXContainerItemProxy */;
-		};
-		D114B19027E30DF200D671E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D114B17227E30DEE00D671E3 /* Toy Robot */;
-			targetProxy = D114B18F27E30DF200D671E3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -570,40 +488,6 @@
 			};
 			name = Release;
 		};
-		D114B19F27E30DF200D671E3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E8F6TRKLFF;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jordikitto.Toy-RobotUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Toy Robot";
-			};
-			name = Debug;
-		};
-		D114B1A027E30DF200D671E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E8F6TRKLFF;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jordikitto.Toy-RobotUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Toy Robot";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -630,15 +514,6 @@
 			buildConfigurations = (
 				D114B19C27E30DF200D671E3 /* Debug */,
 				D114B19D27E30DF200D671E3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D114B19E27E30DF200D671E3 /* Build configuration list for PBXNativeTarget "Toy RobotUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D114B19F27E30DF200D671E3 /* Debug */,
-				D114B1A027E30DF200D671E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
