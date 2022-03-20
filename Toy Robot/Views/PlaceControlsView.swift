@@ -56,9 +56,6 @@ struct PlaceControlsView: View {
             } label: {
                 Text("Place")
             }
-
-            Text("Will place robot at \(robotController.xTile),\(robotController.yTile) facing \(robotController.direction.name)")
-                .foregroundColor(.gray)
         }
         .frame(maxWidth: 300)
     }

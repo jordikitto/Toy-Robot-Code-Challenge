@@ -10,6 +10,8 @@ import SwiftUI
 struct MoveControlsView: View {
     @EnvironmentObject var robotController: RobotController
     
+    @State private var showReport = false
+    
     var body: some View {
         VStack {
             Text("Move")
@@ -19,48 +21,44 @@ struct MoveControlsView: View {
             Spacer()
             
             HStack {
-                Button {
-                    robotController.turnLeft()
-                } label: {
-                    Image(systemName: "arrow.uturn.down.circle.fill")
-                        .font(.largeTitle)
-                }
-                .buttonStyle(.plain)
+                MovementButton(robotController.turnLeft, symbol: "arrow.uturn.down.circle.fill")
                 
-                Button {
-                    robotController.moveForward()
-                } label: {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.largeTitle)
-                }
-                .buttonStyle(.plain)
-                .rotationEffect(robotController.angle)
-                .animation(.linear, value: robotController.angle)
-                .disabled(robotController.state == .obstructed)
+                MovementButton(robotController.moveForward, symbol: "arrow.up.circle.fill")
+                    .rotationEffect(robotController.angle)
+                    .animation(.linear, value: robotController.angle)
+                    .disabled(robotController.state == .obstructed)
                 
-                Button {
-                    robotController.turnRight()
-                } label: {
-                    Image(systemName: "arrow.uturn.down.circle.fill")
-                        .font(.largeTitle)
-                        .rotation3DEffect(.degrees(180), axis: (0, 180, 0))
-                }
-                .buttonStyle(.plain)
-
+                MovementButton(robotController.turnRight, symbol: "arrow.uturn.down.circle.fill")
+                    .rotation3DEffect(.degrees(180), axis: (0, 180, 0))
             }
             
             Spacer()
             
             Button {
-                print("Report!")
+                showReport = true
             } label: {
                 Text("Report")
             }
-
-            Text("Output of report will go here")
-                .foregroundColor(.gray)
         }
         .frame(maxWidth: 300)
+        .alert("Report", isPresented: $showReport) {
+            Button {
+                showReport = false
+            } label: {
+                Text("Ok")
+            }
+        } message: {
+            Text("X Position: \(robotController.xTile)\nY Position: \(robotController.yTile)\nDirection: \(robotController.direction.name)")
+        }
+
+    }
+    
+    func MovementButton(_ action: @escaping () -> Void, symbol: String) -> some View {
+        Button(action: action, label: {
+            Image(systemName: symbol)
+                .font(.largeTitle)
+        })
+        .buttonStyle(.plain)
     }
 }
 
