@@ -1,4 +1,4 @@
-![App Icon](/Toy Robot/Assets.xcassets/AppIcon.appiconset/AppIcon256x256@2x.png)
+![App Icon](/Toy%20Robot/Assets.xcassets/AppIcon.appiconset/AppIcon128x128@2x.png)
 
 # Toy Robot: Code Challenge
 Coding challenging in SwiftUI/Swift where you can control a virtual Toy Robot
