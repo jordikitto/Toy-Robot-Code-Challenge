@@ -8,10 +8,11 @@
 import SwiftUI
 
 @main
-struct Toy_RobotApp: App {
+struct Toy_RobotApp: App {    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ToyRobotView()
+                .frame(minWidth: 450, minHeight: 500)
         }
     }
 }

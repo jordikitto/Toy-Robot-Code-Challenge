@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		D114B17727E30DEE00D671E3 /* Toy_RobotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B17627E30DEE00D671E3 /* Toy_RobotApp.swift */; };
-		D114B17927E30DEE00D671E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B17827E30DEE00D671E3 /* ContentView.swift */; };
+		D114B17927E30DEE00D671E3 /* ToyRobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B17827E30DEE00D671E3 /* ToyRobotView.swift */; };
 		D114B17B27E30DF200D671E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D114B17A27E30DF200D671E3 /* Assets.xcassets */; };
 		D114B17E27E30DF200D671E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D114B17D27E30DF200D671E3 /* Preview Assets.xcassets */; };
 		D114B18927E30DF200D671E3 /* Toy_RobotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B18827E30DF200D671E3 /* Toy_RobotTests.swift */; };
 		D114B19327E30DF200D671E3 /* Toy_RobotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B19227E30DF200D671E3 /* Toy_RobotUITests.swift */; };
 		D114B19527E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B19427E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift */; };
+		D114B1A327E30ECB00D671E3 /* TableTopGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A227E30ECB00D671E3 /* TableTopGridView.swift */; };
+		D114B1A527E3131600D671E3 /* RobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A427E3131600D671E3 /* RobotView.swift */; };
+		D114B1A727E31E5200D671E3 /* PlaceControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A627E31E5200D671E3 /* PlaceControlsView.swift */; };
+		D114B1AA27E31FC500D671E3 /* RobotDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1A927E31FC500D671E3 /* RobotDirection.swift */; };
+		D114B1AC27E3224D00D671E3 /* MoveControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1AB27E3224D00D671E3 /* MoveControlsView.swift */; };
+		D114B1AF27E32E9F00D671E3 /* RobotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1AE27E32E9F00D671E3 /* RobotController.swift */; };
+		D1D529B127E69EE20015C2C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B027E69EE20015C2C2 /* Constants.swift */; };
+		D1D529B327E6B0730015C2C2 /* RobotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B227E6B0730015C2C2 /* RobotState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +44,7 @@
 /* Begin PBXFileReference section */
 		D114B17327E30DEE00D671E3 /* Toy Robot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toy Robot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D114B17627E30DEE00D671E3 /* Toy_RobotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotApp.swift; sourceTree = "<group>"; };
-		D114B17827E30DEE00D671E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D114B17827E30DEE00D671E3 /* ToyRobotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToyRobotView.swift; sourceTree = "<group>"; };
 		D114B17A27E30DF200D671E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D114B17D27E30DF200D671E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D114B17F27E30DF200D671E3 /* Toy_Robot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Toy_Robot.entitlements; sourceTree = "<group>"; };
@@ -45,6 +53,14 @@
 		D114B18E27E30DF200D671E3 /* Toy RobotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Toy RobotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D114B19227E30DF200D671E3 /* Toy_RobotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotUITests.swift; sourceTree = "<group>"; };
 		D114B19427E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy_RobotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D114B1A227E30ECB00D671E3 /* TableTopGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTopGridView.swift; sourceTree = "<group>"; };
+		D114B1A427E3131600D671E3 /* RobotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotView.swift; sourceTree = "<group>"; };
+		D114B1A627E31E5200D671E3 /* PlaceControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceControlsView.swift; sourceTree = "<group>"; };
+		D114B1A927E31FC500D671E3 /* RobotDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotDirection.swift; sourceTree = "<group>"; };
+		D114B1AB27E3224D00D671E3 /* MoveControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveControlsView.swift; sourceTree = "<group>"; };
+		D114B1AE27E32E9F00D671E3 /* RobotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotController.swift; sourceTree = "<group>"; };
+		D1D529B027E69EE20015C2C2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D1D529B227E6B0730015C2C2 /* RobotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +112,11 @@
 			isa = PBXGroup;
 			children = (
 				D114B17627E30DEE00D671E3 /* Toy_RobotApp.swift */,
-				D114B17827E30DEE00D671E3 /* ContentView.swift */,
+				D114B17827E30DEE00D671E3 /* ToyRobotView.swift */,
+				D1D529B027E69EE20015C2C2 /* Constants.swift */,
+				D114B1A827E31FB500D671E3 /* Models */,
+				D114B1AD27E32E6A00D671E3 /* Controllers */,
+				D114B1A127E30EA300D671E3 /* Views */,
 				D114B17A27E30DF200D671E3 /* Assets.xcassets */,
 				D114B17F27E30DF200D671E3 /* Toy_Robot.entitlements */,
 				D114B17C27E30DF200D671E3 /* Preview Content */,
@@ -127,6 +147,34 @@
 				D114B19427E30DF200D671E3 /* Toy_RobotUITestsLaunchTests.swift */,
 			);
 			path = "Toy RobotUITests";
+			sourceTree = "<group>";
+		};
+		D114B1A127E30EA300D671E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D114B1A227E30ECB00D671E3 /* TableTopGridView.swift */,
+				D114B1A427E3131600D671E3 /* RobotView.swift */,
+				D114B1A627E31E5200D671E3 /* PlaceControlsView.swift */,
+				D114B1AB27E3224D00D671E3 /* MoveControlsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D114B1A827E31FB500D671E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D114B1A927E31FC500D671E3 /* RobotDirection.swift */,
+				D1D529B227E6B0730015C2C2 /* RobotState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D114B1AD27E32E6A00D671E3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D114B1AE27E32E9F00D671E3 /* RobotController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +307,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D114B17927E30DEE00D671E3 /* ContentView.swift in Sources */,
+				D114B17927E30DEE00D671E3 /* ToyRobotView.swift in Sources */,
+				D114B1A727E31E5200D671E3 /* PlaceControlsView.swift in Sources */,
+				D114B1AF27E32E9F00D671E3 /* RobotController.swift in Sources */,
+				D114B1AC27E3224D00D671E3 /* MoveControlsView.swift in Sources */,
+				D1D529B327E6B0730015C2C2 /* RobotState.swift in Sources */,
+				D114B1AA27E31FC500D671E3 /* RobotDirection.swift in Sources */,
 				D114B17727E30DEE00D671E3 /* Toy_RobotApp.swift in Sources */,
+				D114B1A327E30ECB00D671E3 /* TableTopGridView.swift in Sources */,
+				D114B1A527E3131600D671E3 /* RobotView.swift in Sources */,
+				D1D529B127E69EE20015C2C2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
