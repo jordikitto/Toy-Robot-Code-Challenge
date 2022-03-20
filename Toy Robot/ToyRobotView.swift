@@ -34,6 +34,7 @@ struct ToyRobotView: View {
                 PlaceControlsView().padding()
                 Spacer()
                 MoveControlsView().padding()
+                    .disabled(robotController.state == .unplaced)
                 Spacer()
             }
             .frame(maxHeight: 200)

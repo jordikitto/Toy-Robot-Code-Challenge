@@ -22,6 +22,7 @@
 		D114B1AF27E32E9F00D671E3 /* RobotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114B1AE27E32E9F00D671E3 /* RobotController.swift */; };
 		D1D529B127E69EE20015C2C2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B027E69EE20015C2C2 /* Constants.swift */; };
 		D1D529B327E6B0730015C2C2 /* RobotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B227E6B0730015C2C2 /* RobotState.swift */; };
+		D1D529B627E6C6420015C2C2 /* Angle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D529B527E6C6420015C2C2 /* Angle+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		D114B1AE27E32E9F00D671E3 /* RobotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotController.swift; sourceTree = "<group>"; };
 		D1D529B027E69EE20015C2C2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1D529B227E6B0730015C2C2 /* RobotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotState.swift; sourceTree = "<group>"; };
+		D1D529B527E6C6420015C2C2 /* Angle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				D114B17627E30DEE00D671E3 /* Toy_RobotApp.swift */,
 				D114B17827E30DEE00D671E3 /* ToyRobotView.swift */,
 				D1D529B027E69EE20015C2C2 /* Constants.swift */,
+				D1D529B427E6C50E0015C2C2 /* Extensions */,
 				D114B1A827E31FB500D671E3 /* Models */,
 				D114B1AD27E32E6A00D671E3 /* Controllers */,
 				D114B1A127E30EA300D671E3 /* Views */,
@@ -175,6 +178,14 @@
 				D114B1AE27E32E9F00D671E3 /* RobotController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D1D529B427E6C50E0015C2C2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D1D529B527E6C6420015C2C2 /* Angle+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 				D114B1A327E30ECB00D671E3 /* TableTopGridView.swift in Sources */,
 				D114B1A527E3131600D671E3 /* RobotView.swift in Sources */,
 				D1D529B127E69EE20015C2C2 /* Constants.swift in Sources */,
+				D1D529B627E6C6420015C2C2 /* Angle+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

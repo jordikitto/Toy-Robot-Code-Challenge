@@ -10,6 +10,8 @@ import SwiftUI
 struct PlaceControlsView: View {
     @EnvironmentObject var robotController: RobotController
     
+    @State var direction: RobotDirection = .north
+    
     let size = 6
     
     var body: some View {
@@ -38,7 +40,7 @@ struct PlaceControlsView: View {
                 }
             }
             
-            Picker(selection: $robotController.direction) {
+            Picker(selection: $direction) {
                 ForEach(RobotDirection.allCases, id: \.self) { dir in
                     Text(dir.name)
                         .tag(dir.name)
@@ -48,11 +50,15 @@ struct PlaceControlsView: View {
             }
             .pickerStyle(.segmented)
             .labelsHidden()
+            .onChange(of: direction) { newDirection in
+                robotController.updateDirection(newDirection)
+            }
+            .disabled(robotController.state != .unplaced)
             
             Spacer()
             
             Button {
-                print("Place!")
+                robotController.place()
             } label: {
                 Text("Place")
             }

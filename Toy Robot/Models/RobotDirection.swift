@@ -17,16 +17,7 @@ enum RobotDirection: String, Equatable, CaseIterable {
     // MARK: Initialisers
     
     init(from inputAngle: Angle) {
-        var angle = inputAngle
-        
-        // Bring within 0 - 360
-        while (angle >= .degrees(360)) {
-            angle -= .degrees(360)
-        }
-        
-        while (angle < .degrees(0)) {
-            angle += .degrees(360)
-        }
+        let angle = inputAngle.normalised
         
         // Convert to direction
         let offset: Angle = .degrees(45) // Used to ensure small variance below the threshold rounds to a likely correct number
@@ -90,6 +81,19 @@ enum RobotDirection: String, Equatable, CaseIterable {
         }
     }
     
+    var opposite: RobotDirection {
+        switch self {
+        case .north:
+            return .south
+        case .east:
+            return .west
+        case .south:
+            return .north
+        case .west:
+            return .east
+        }
+    }
+    
     // MARK: Functions
     
     func forwardDelta() -> (X: Int, Y: Int) {
@@ -105,5 +109,19 @@ enum RobotDirection: String, Equatable, CaseIterable {
         }
     }
     
+    func delta(to newDirection: RobotDirection) -> Angle {
+        if (self == newDirection) {
+            return .degrees(0)
+        } else if (self.opposite == newDirection) {
+            return .degrees(180)
+        } else if (self.directionToLeft == newDirection) {
+            return .degrees(-90)
+        } else if (self.directionToRight == newDirection) {
+            return .degrees(90)
+        } else {
+            // Fallback that I'm pretty sure should never happen
+            return newDirection.angle - self.angle
+        }
+    }
 
 }

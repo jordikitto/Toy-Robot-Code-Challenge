@@ -13,7 +13,12 @@ class RobotController: ObservableObject {
     @Published var yTile = 1
     @Published var direction: RobotDirection = .north
     @Published var angle: Angle = .degrees(0)
-    @Published var state: RobotState = .nominal
+    @Published var state: RobotState = .unplaced
+    
+    func place() {
+        state = .nominal
+        detectObstruction()
+    }
     
     func moveForward() {
         let delta = direction.forwardDelta()
@@ -25,19 +30,27 @@ class RobotController: ObservableObject {
     
     func turnRight() {
         angle += .degrees(90)
-        direction = RobotDirection(from: angle)
-        
-        detectObstruction()
+        updateDirection()
     }
     
     func turnLeft() {
         angle += .degrees(-90)
+        updateDirection()
+    }
+    
+    func updateDirection() {
         direction = RobotDirection(from: angle)
-        
         detectObstruction()
     }
     
+    func updateDirection(_ newDirection: RobotDirection) {
+        angle += direction.delta(to: newDirection)
+        updateDirection()
+    }
+    
     func detectObstruction() {
+        guard state != .unplaced else { return }
+        
         let delta = direction.forwardDelta()
         let nextXTile = xTile + delta.X
         let nextYTile = yTile + delta.Y
